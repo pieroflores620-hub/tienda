@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLDEN STYLE — Wear Your Attitude</title>
+<style>
+  :root {
+    --gold: #D4A843;
+    --gold-dark: #B8922E;
+    --gold-light: #F0C96A;
+    --black: #080808;
+    --dark: #0E0E0E;
+    --dark2: #161616;
+    --dark3: #1E1E1E;
+    --dark4: #252525;
+    --gray: #444;
+    --gray2: #666;
+    --gray3: #999;
+    --white: #FFFFFF;
+    --off-white: #F5F1E8;
+    --green: #2ECC71;
+    --red: #E74C3C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,8,8,0.92); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,168,67,0.15);
+    padding: 0 32px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; cursor: pointer;
+    user-select: none; transition: opacity .2s;
+  }
+  .nav-logo:hover { opacity: .85; }
+  .logo-badge {
+    width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 9px; display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1rem; color: var(--black);
+    box-shadow: 0 4px 16px rgba(212,168,67,0.35);
+  }
+  .logo-name {
+    font-size: 1.1rem; font-weight: 800; color: var(--gold); letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .logo-sub { font-size: 0.55rem; color: var(--gray3); letter-spacing: 3px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { color: var(--gray3); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .cart-icon {
+    position: relative; cursor: pointer; padding: 8px 16px;
+    background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.3);
+    border-radius: 30px; font-size: 0.85rem; color: var(--gold);
+    transition: all .2s; display: flex; align-items: center; gap: 6px;
+  }
+  .cart-icon:hover { background: rgba(212,168,67,0.2); }
+  .cart-count {
+    background: var(--gold); color: var(--black); font-size: 0.65rem;
+    font-weight: 800; width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; min-width: 18px;
+  }
+  .edit-btn {
+    padding: 6px 14px; background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); border-radius: 20px; font-size: 0.75rem; cursor: pointer;
+    transition: all .2s;
+  }
+  .edit-btn:hover { background: rgba(212,168,67,0.1); }
+  .edit-btn.active { background: rgba(212,168,67,0.15); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #080808 0%, #111111 50%, #0a0807 100%);
+    position: relative; overflow: hidden; padding-top: 64px;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,168,67,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 700px; text-align: center; z-index: 1; padding: 40px 24px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.3);
+    padding: 6px 18px; border-radius: 30px; font-size: 0.72rem;
+    color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; line-height: 1.05;
+    letter-spacing: -1px; margin-bottom: 20px;
+  }
+  .hero-title em { color: var(--gold); font-style: normal; }
+  .hero-desc { font-size: 1rem; color: var(--gray3); line-height: 1.7; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 32px; background: var(--gold); color: var(--black);
+    border: none; border-radius: 50px; font-weight: 800; font-size: 0.95rem;
+    cursor: pointer; transition: all .2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,168,67,0.3); }
+  .btn-secondary {
+    padding: 14px 32px; background: transparent; color: var(--white);
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;
+    font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all .2s;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats { display: flex; gap: 32px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
+  .hero-stat { text-align: center; }
+  .hero-stat-value { font-size: 1.6rem; font-weight: 900; color: var(--gold); }
+  .hero-stat-label { font-size: 0.72rem; color: var(--gray3); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ===== SALE TICKER ===== */
+  .ticker {
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    padding: 8px 0; overflow: hidden;
+  }
+  .ticker-inner { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; }
+  .ticker-inner span { padding: 0 32px; font-size: 0.75rem; font-weight: 700; color: var(--black); }
+  @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ===== SECTION ===== */
+  section { padding: 80px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section-eyebrow { font-size: 0.7rem; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+  .section-title em { color: var(--gold); font-style: normal; }
+  .section-desc { color: var(--gray3); font-size: 0.95rem; line-height: 1.6; max-width: 500px; }
+
+  /* ===== PRODUCTS ===== */
+  #productos { background: var(--dark); }
+  .prods-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+  .cat-filter { display: flex; gap: 6px; flex-wrap: wrap; }
+  .cat-btn {
+    padding: 7px 16px; border-radius: 30px; border: 1px solid #333;
+    background: transparent; color: var(--gray3); font-size: 0.78rem; cursor: pointer;
+    transition: all .2s; font-weight: 500;
+  }
+  .cat-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,168,67,0.1); }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 20px; }
+  .product-card {
+    background: var(--dark2); border: 1px solid #222; border-radius: 14px;
+    overflow: hidden; transition: all .25s; cursor: pointer;
+  }
+  .product-card:hover { border-color: rgba(212,168,67,0.4); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.5); }
+  .prod-img-wrap { position: relative; overflow: hidden; }
+  .prod-img { width: 100%; height: 220px; object-fit: cover; display: block; background: var(--dark3); transition: transform .4s; }
+  .product-card:hover .prod-img { transform: scale(1.04); }
+  .prod-img-ph { width: 100%; height: 220px; background: var(--dark3); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+  .prod-badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--gold); color: var(--black); font-size: 0.65rem; font-weight: 800;
+    padding: 4px 10px; border-radius: 20px; letter-spacing: 1px;
+  }
+  .prod-badge.agotado { background: var(--gray2); color: white; }
+  .prod-img-count {
+    position: absolute; bottom: 8px; right: 8px;
+    background: rgba(0,0,0,0.6); color: white; font-size: 0.65rem;
+    padding: 3px 8px; border-radius: 10px;
+  }
+  .prod-body { padding: 16px; }
+  .prod-cat { font-size: 0.68rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .prod-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .prod-desc { font-size: 0.78rem; color: var(--gray3); margin-bottom: 12px; line-height: 1.5; }
+  .prod-footer { display: flex; align-items: center; justify-content: space-between; }
+  .prod-price { font-size: 1.2rem; font-weight: 800; color: var(--gold); }
+  .add-cart-btn {
+    padding: 8px 18px; background: var(--gold); color: var(--black);
+    border: none; border-radius: 25px; font-weight: 700; font-size: 0.78rem;
+    cursor: pointer; transition: all .2s;
+  }
+  .add-cart-btn:hover { background: var(--gold-light); }
+  .add-cart-btn:disabled { background: var(--gray); color: var(--gray3); cursor: not-allowed; }
+
+  /* ===== EDIT OVERLAY ===== */
+  .edit-mode .prod-name[contenteditable], .edit-mode .prod-desc[contenteditable] {
+    outline: 2px dashed var(--gold); border-radius: 4px; padding: 2px 4px;
+  }
+  .edit-upload-overlay {
+    display: none; position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+    align-items: center; justify-content: center; cursor: pointer;
+    font-size: 0.82rem; color: white; text-align: center;
+  }
+  .edit-mode .prod-img-wrap:hover .edit-upload-overlay { display: flex; }
+
+  /* ===== WHY ===== */
+  #nosotros { background: var(--black); }
+  .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+  .feature-card {
+    background: var(--dark2); border: 1px solid #222; border-radius: 14px; padding: 28px;
+    transition: border-color .2s;
+  }
+  .feature-card:hover { border-color: rgba(212,168,67,0.3); }
+  .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+  .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .feature-desc { font-size: 0.83rem; color: var(--gray3); line-height: 1.6; }
+
+  /* ===== GALLERY ===== */
+  #galeria { background: var(--dark); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 40px; }
+  .gallery-item { border-radius: 10px; overflow: hidden; aspect-ratio: 1; cursor: pointer; position: relative; }
+  .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .gallery-item:hover .gallery-img { transform: scale(1.06); }
+  .gallery-placeholder { width: 100%; height: 100%; background: var(--dark3); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+  /* ===== STEPS ===== */
+  .steps { background: var(--black); }
+  .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 48px; }
+  .step-card { text-align: center; padding: 28px 16px; }
+  .step-num {
+    width: 44px; height: 44px; background: rgba(212,168,67,0.1); border: 2px solid rgba(212,168,67,0.4);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; color: var(--gold); margin: 0 auto 16px;
+  }
+  .step-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; }
+  .step-desc { font-size: 0.78rem; color: var(--gray3); line-height: 1.5; }
+
+  /* ===== REVIEWS ===== */
+  .reviews { background: var(--dark); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+  .review-card { background: var(--dark2); border: 1px solid #222; border-radius: 14px; padding: 24px; }
+  .stars { color: var(--gold); margin-bottom: 12px; font-size: 0.9rem; }
+  .review-text { font-size: 0.83rem; color: var(--gray3); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+  .reviewer { display: flex; align-items: center; gap: 10px; }
+  .reviewer-avatar { width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--black); font-size: 0.85rem; }
+  .reviewer-name { font-size: 0.85rem; font-weight: 700; }
+  .reviewer-city { font-size: 0.7rem; color: var(--gray3); }
+
+  /* ===== CTA ===== */
+  .cta-section { background: linear-gradient(135deg, #0E0B05, #1A1200); border-top: 1px solid rgba(212,168,67,0.1); border-bottom: 1px solid rgba(212,168,67,0.1); }
+  .cta-inner { text-align: center; padding: 80px 24px; }
+
+  /* ===== CONTACT ===== */
+  #contacto { background: var(--black); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--dark); border-top: 1px solid #1a1a1a; padding: 32px 0; text-align: center; }
+  footer .footer-logo { font-size: 1.2rem; font-weight: 900; color: var(--gold); letter-spacing: 2px; margin-bottom: 8px; }
+  footer .footer-sub { font-size: 0.72rem; color: var(--gray3); }
+
+  /* ===== CART DRAWER ===== */
+  .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; display: none; }
+  .cart-overlay.open { display: block; }
+  .cart-drawer {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 380px; max-width: 95vw;
+    background: var(--dark2); border-left: 1px solid #2a2a2a;
+    z-index: 201; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform .3s;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-drawer-header {
+    padding: 20px; border-bottom: 1px solid #2a2a2a;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cart-drawer-title { font-size: 1rem; font-weight: 700; }
+  .cart-close { background: transparent; border: none; color: var(--gray3); font-size: 1.2rem; cursor: pointer; }
+  .cart-drawer-items { flex: 1; overflow-y: auto; padding: 16px; }
+  .cart-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
+  .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; background: var(--dark3); flex-shrink: 0; }
+  .cart-item-img-ph { width: 60px; height: 60px; background: var(--dark3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+  .cart-item-price { font-size: 0.82rem; color: var(--gold); font-weight: 700; }
+  .cart-item-qty { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .qty-btn { width: 24px; height: 24px; background: var(--dark3); border: 1px solid #444; color: white; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
+  .cart-drawer-footer { padding: 16px; border-top: 1px solid #2a2a2a; }
+  .cart-subtotal { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px; }
+  .cart-total { display: flex; justify-content: space-between; font-size: 1rem; font-weight: 800; color: var(--gold); margin-bottom: 16px; }
+  .pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .pay-opt {
+    padding: 9px; border: 1px solid #333; border-radius: 8px; background: transparent;
+    color: var(--gray3); font-size: 0.75rem; cursor: pointer; transition: all .2s; text-align: center;
+  }
+  .pay-opt.selected { border-color: var(--gold); color: var(--gold); background: rgba(212,168,67,0.08); }
+  .checkout-form { margin-bottom: 12px; }
+  .checkout-input {
+    width: 100%; background: var(--dark3); border: 1px solid #333;
+    color: white; padding: 10px 12px; border-radius: 8px; font-size: 0.85rem;
+    outline: none; margin-bottom: 8px; transition: border-color .2s;
+  }
+  .checkout-input:focus { border-color: var(--gold); }
+  .checkout-btn {
+    width: 100%; padding: 14px; background: var(--gold); color: var(--black);
+    border: none; border-radius: 10px; font-weight: 800; font-size: 0.95rem;
+    cursor: pointer; transition: all .2s;
+  }
+  .checkout-btn:hover { background: var(--gold-light); }
+  .whatsapp-btn {
+    width: 100%; padding: 11px; background: #25D366; color: white;
+    border: none; border-radius: 10px; font-weight: 700; font-size: 0.85rem;
+    cursor: pointer; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--dark2); border-left: 4px solid var(--gold);
+    padding: 14px 22px; border-radius: 10px; font-size: 0.85rem;
+    z-index: 500; opacity: 0; transition: all .3s; white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .toast.success { border-color: var(--green); }
+  .toast.error { border-color: var(--red); }
+
+  /* ===== CONFIRM BANNER ===== */
+  .confirm-banner {
+    position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
+    background: var(--dark2); border: 2px solid var(--green);
+    border-radius: 12px; padding: 16px 24px; z-index: 300; display: none;
+    text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    max-width: 400px; width: 90%;
+  }
+  .confirm-banner.show { display: block; }
+
+  /* ===== EDIT MODE ===== */
+  .edit-toolbar {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: var(--dark2); border: 1px solid var(--gold); border-radius: 30px;
+    padding: 10px 20px; display: none; align-items: center; gap: 12px; z-index: 400;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .edit-toolbar.show { display: flex; }
+  .edit-toolbar-text { font-size: 0.78rem; color: var(--gray3); }
+  .save-edit-btn { padding: 8px 20px; background: var(--gold); color: var(--black); border: none; border-radius: 20px; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
+
+  /* ===== BOLETA LANDING ===== */
+  .bol-overlay {
+    position:fixed;inset:0;background:rgba(0,0,0,0.88);display:none;
+    align-items:center;justify-content:center;z-index:600;padding:16px;
+  }
+  .bol-overlay.open{display:flex;}
+  .bol-wrap {
+    background:#fff;color:#111;border-radius:10px;width:400px;max-width:100%;
+    max-height:92vh;overflow-y:auto;font-family:'Courier New',monospace;
+    box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  }
+  .bol-acts{display:flex;gap:8px;padding:12px 14px;background:#f5f5f5;border-bottom:1px solid #ddd;border-radius:10px 10px 0 0;flex-wrap:wrap;}
+  .bol-acts button{padding:7px 13px;border-radius:6px;border:none;cursor:pointer;font-size:0.75rem;font-weight:700;}
+  .bol-body{padding:24px 20px;}
+  .bol-hdr{text-align:center;border-bottom:2px solid #111;padding-bottom:12px;margin-bottom:12px;}
+  .bol-brand{font-size:1.3rem;font-weight:900;letter-spacing:3px;}
+  .bol-tipo-badge{display:inline-block;border:2px solid #111;padding:3px 16px;font-size:0.85rem;font-weight:800;letter-spacing:2px;margin:8px 0 4px;}
+  .bol-ef{border:none;border-bottom:1px dashed #bbb;background:transparent;font-family:'Courier New',monospace;font-size:0.75rem;color:#111;width:100%;outline:none;padding:2px 0;}
+  .bol-ef:focus{border-bottom-color:#D4A843;background:#fffde7;}
+  .bol-tbl{width:100%;border-collapse:collapse;font-size:0.72rem;margin:12px 0;}
+  .bol-tbl th{border-bottom:2px solid #111;padding:4px 2px;text-align:left;font-size:0.65rem;text-transform:uppercase;}
+  .bol-tbl td{padding:4px 2px;border-bottom:1px solid #eee;}
+  .bol-tots{border-top:2px solid #111;padding-top:8px;}
+  .bol-trow{display:flex;justify-content:space-between;font-size:0.75rem;padding:2px 0;}
+  .bol-tmain{font-size:0.95rem;font-weight:900;border-top:1px solid #111;margin-top:6px;padding-top:6px;}
+  .bol-ftr{text-align:center;font-size:0.62rem;color:#777;margin-top:14px;border-top:1px dashed #ccc;padding-top:10px;line-height:1.8;}
+  @media print {
+    body>*:not(.bol-overlay){display:none!important;}
+    .bol-overlay{position:static!important;background:white!important;display:block!important;}
+    .bol-acts{display:none!important;}
+    .bol-wrap{box-shadow:none!important;max-height:none!important;}
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .features-grid, .reviews-grid { grid-template-columns: repeat(2,1fr); }
+    .steps-grid { grid-template-columns: repeat(2,1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .features-grid, .reviews-grid, .steps-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(2,1fr); }
+    .hero-title { font-size: 2rem; }
+    .prods-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" id="navLogo" title="Clic 3 veces para ir al ERP">
+    <div class="logo-badge">GS</div>
+    <div>
+      <div class="logo-name" id="logoName">GOLDEN STYLE</div>
+      <div class="logo-sub">WEAR YOUR ATTITUDE</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#productos">Prendas</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="edit-btn" id="editToggle" onclick="toggleEditMode()">✏ Editar</button>
+    <div class="cart-icon" onclick="openCart()">
+      🛒 <span id="cartCount" class="cart-count">0</span>
+    </div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" style="margin-top:64px;">
+  <div class="ticker-inner" id="tickerInner">
+    <span>🔥 COLECCIÓN 2026</span><span>⭐ ENVÍOS A TODO TRUJILLO</span>
+    <span>💳 YAPE · PLIN · EFECTIVO · TARJETA</span><span>👕 ROPA URBANA PREMIUM</span>
+    <span>✨ DISEÑOS EXCLUSIVOS</span><span>🏆 CALIDAD GARANTIZADA</span>
+    <span>🔥 COLECCIÓN 2026</span><span>⭐ ENVÍOS A TODO TRUJILLO</span>
+    <span>💳 YAPE · PLIN · EFECTIVO · TARJETA</span><span>👕 ROPA URBANA PREMIUM</span>
+    <span>✨ DISEÑOS EXCLUSIVOS</span><span>🏆 CALIDAD GARANTIZADA</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">📍 Trujillo · Ropa Urbana Premium</div>
+    <h1 class="hero-title">Viste con <em>actitud.</em><br>Destaca siempre.</h1>
+    <p class="hero-desc">Hoodies, conjuntos, casacas y más. Diseños urbanos premium que combinan estilo, comodidad y exclusividad para quienes se atreven a ser diferentes.</p>
+    <div class="hero-btns">
+      <a href="#productos" class="btn-primary">👕 Ver colección</a>
+      <a href="https://wa.me/51925792656" target="_blank" class="btn-secondary">📱 Pedir por WhatsApp</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-value">250m²</div><div class="hero-stat-label">Tienda exclusiva</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">100%</div><div class="hero-stat-label">Calidad premium</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">Delivery</div><div class="hero-stat-label">A todo Trujillo</div></div>
+      <div class="hero-stat"><div class="hero-stat-value" id="salesTicker">0</div><div class="hero-stat-label">Ventas registradas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="productos">
+  <div class="container">
+    <div class="prods-header">
+      <div>
+        <div class="section-eyebrow">Colección 2026</div>
+        <h2 class="section-title">Nuestras <em>prendas estrella</em></h2>
+        <p style="font-size:0.78rem;color:var(--gray3);margin-top:4px;">Precios finales con IGV 18% incluido. Sin sorpresas.</p>
+      </div>
+      <div class="cat-filter" id="catFilter">
+        <button class="cat-btn active" onclick="filterCat('',this)">Todas</button>
+        <button class="cat-btn" onclick="filterCat('Hoodies',this)">Hoodies</button>
+        <button class="cat-btn" onclick="filterCat('Conjuntos',this)">Conjuntos</button>
+        <button class="cat-btn" onclick="filterCat('Casacas',this)">Casacas</button>
+        <button class="cat-btn" onclick="filterCat('Joggers',this)">Joggers</button>
+        <button class="cat-btn" onclick="filterCat('Polos',this)">Polos</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="nosotros">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="why-grid">
+      <div>
+        <div class="section-eyebrow">¿Por qué Golden Style?</div>
+        <h2 class="section-title">Estilo urbano hecho <em>para ti</em></h2>
+        <p class="section-desc">Más que ropa, es una actitud. Cada prenda Golden Style es seleccionada para quienes quieren destacar con autenticidad.</p>
+      </div>
+      <div class="features-grid" style="grid-template-columns:1fr;gap:16px;">
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">Calidad premium</div>
+          <div class="feature-desc">Prendas seleccionadas con materiales de primera. Costura reforzada, telas de alto gramaje.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">Diseño exclusivo</div>
+          <div class="feature-desc">Colecciones urbanas modernas en tendencia. Cada prenda refleja una actitud única.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-title">Delivery express</div>
+          <div class="feature-desc">Entregas a domicilio en Trujillo. Pide por WhatsApp y recibe en casa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="galeria">
+  <div class="container">
+    <div class="section-eyebrow">Espacios Golden Style</div>
+    <h2 class="section-title">Nuestra tienda en <em>Trujillo</em></h2>
+    <p class="section-desc">250m² diseñados para una experiencia de compra premium.</p>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" style="grid-row:span 2;"><img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80" class="gallery-img" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder>🏪</div>'"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&q=80" class="gallery-img" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder>👗</div>'"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&q=80" class="gallery-img" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder>🧥</div>'"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=400&q=80" class="gallery-img" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder>✨</div>'"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" class="gallery-img" onerror="this.parentElement.innerHTML='<div class=gallery-placeholder>🪞</div>'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:0">
+      <div class="section-eyebrow" style="text-align:center;">Súper fácil</div>
+      <h2 class="section-title" style="text-align:center;">Tu prenda en <em>4 pasos</em></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><div class="step-title">Elige tu prenda</div><div class="step-desc">Explora y selecciona tu talla, color y modelo favorito.</div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-title">Agrega al carrito</div><div class="step-desc">Añade las prendas y revisa tu pedido antes de confirmar.</div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-title">Confirma y paga</div><div class="step-desc">Yape, Plin, efectivo o tarjeta. Seguro y rápido.</div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-title">Recibe tu pedido</div><div class="step-desc">Delivery express en Trujillo o recoge en tienda.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-eyebrow">Clientes satisfechos</div>
+      <h2 class="section-title">Lo que dicen <em>de nosotros</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="stars">★★★★★</div><p class="review-text">"El hoodie que compré es de una calidad increíble. Súper cómodo y el diseño es exactamente lo que buscaba. 100% recomendado."</p><div class="reviewer"><div class="reviewer-avatar">A</div><div><div class="reviewer-name">Alejandro R.</div><div class="reviewer-city">Trujillo</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p class="review-text">"Compré el conjunto urbano y llegó al día siguiente. El delivery fue rapidísimo y la prenda superó mis expectativas."</p><div class="reviewer"><div class="reviewer-avatar">V</div><div><div class="reviewer-name">Valentina C.</div><div class="reviewer-city">Trujillo</div></div></div></div>
+      <div class="review-card"><div class="stars">★★★★★</div><p class="review-text">"La casaca bomber es de otro nivel. Material grueso, costuras perfectas. Ya compré mi segunda prenda en Golden Style."</p><div class="reviewer"><div class="reviewer-avatar">M</div><div><div class="reviewer-name">Marco S.</div><div class="reviewer-city">Trujillo</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-eyebrow" style="text-align:center;">¡Empieza hoy!</div>
+    <h2 class="section-title" style="font-size:2.2rem;text-align:center;">Tu próxima prenda <em>te espera</em></h2>
+    <div style="display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+      <a href="#productos" class="btn-primary">👕 Ver colección completa</a>
+      <a href="https://wa.me/51925792656" target="_blank" class="btn-secondary">📱 Pedir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-eyebrow">Contáctanos</div>
+        <h2 class="section-title">Estamos en <em>Trujillo</em></h2>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;"><span style="font-size:1.2rem;">📍</span> Trujillo, La Libertad, Perú</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;"><span style="font-size:1.2rem;">📱</span> <a href="https://wa.me/51925792656" style="color:var(--gold);text-decoration:none;">WhatsApp: 925 792 656</a></div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;"><span style="font-size:1.2rem;">📧</span> goldenstyle@gmail.com</div>
+        </div>
+        <div style="margin-top:24px;padding:16px;background:var(--dark2);border:1px solid #2a2a2a;border-radius:10px;font-size:0.75rem;color:var(--gray3);line-height:1.7;">
+          ✅ Precios incluyen IGV 18% — SUNAT<br>
+          📄 Emitimos boletas y facturas electrónicas<br>
+          🏛️ Régimen MYPE Tributario
+        </div>
+      </div>
+      <div style="background:var(--dark2);border:1px solid #2a2a2a;border-radius:14px;padding:24px;">
+        <div style="font-size:0.88rem;font-weight:700;margin-bottom:16px;">📩 Envíanos un mensaje</div>
+        <input class="checkout-input" id="ctaName" placeholder="Tu nombre">
+        <input class="checkout-input" id="ctaPhone" placeholder="Tu WhatsApp">
+        <textarea class="checkout-input" id="ctaMsg" placeholder="¿Qué prenda te interesa?" rows="3" style="resize:none;"></textarea>
+        <button class="whatsapp-btn" onclick="sendContactWA()" style="margin-top:4px;">📱 Enviar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">GOLDEN STYLE</div>
+  <div class="footer-sub" style="margin-bottom:6px;">© 2026 Golden Style S.A.C. · Trujillo, Perú · Todos los derechos reservados</div>
+  <div class="footer-sub">Precios incluyen IGV 18% · RMT SUNAT</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-header">
+    <div class="cart-drawer-title">🛒 Tu carrito</div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-drawer-items" id="drawerItems">
+    <div style="text-align:center;padding:40px;color:var(--gray3);">Tu carrito está vacío</div>
+  </div>
+  <div class="cart-drawer-footer">
+    <div class="cart-subtotal"><span>Base imponible</span><span id="drawerBase">S/ 0.00</span></div>
+    <div class="cart-subtotal"><span>IGV (18%)</span><span id="drawerIgv">S/ 0.00</span></div>
+    <div class="cart-total"><span>TOTAL</span><span id="drawerTotal">S/ 0.00</span></div>
+    <div class="checkout-form">
+      <input class="checkout-input" id="orderName" placeholder="Tu nombre completo *">
+      <input class="checkout-input" id="orderPhone" placeholder="Tu WhatsApp *">
+      <input class="checkout-input" id="orderAddr" placeholder="Dirección de entrega (opcional)">
+    </div>
+    <div class="pay-methods">
+      <button class="pay-opt selected" onclick="selPay(this,'Yape/Plin')">📱 Yape/Plin</button>
+      <button class="pay-opt" onclick="selPay(this,'Efectivo')">💵 Efectivo</button>
+      <button class="pay-opt" onclick="selPay(this,'Tarjeta')">💳 Tarjeta</button>
+      <button class="pay-opt" onclick="selPay(this,'Transferencia')">🏦 Transferencia</button>
+    </div>
+    <button class="checkout-btn" onclick="confirmOrder()">✓ CONFIRMAR PEDIDO</button>
+    <button class="whatsapp-btn" onclick="orderViaWhatsApp()">📱 Pedir por WhatsApp</button>
+  </div>
+</div>
+
+<!-- CONFIRM BANNER -->
+<div class="confirm-banner" id="confirmBanner">
+  <div style="font-size:1.5rem;margin-bottom:8px;">✅</div>
+  <div style="font-weight:700;margin-bottom:4px;">¡Pedido confirmado!</div>
+  <div id="confirmMsg" style="font-size:0.82rem;color:var(--gray3);">Tu pedido fue enviado. Golden Style te contactará pronto.</div>
+</div>
+
+<!-- EDIT TOOLBAR -->
+<div class="edit-toolbar" id="editToolbar">
+  <span class="edit-toolbar-text">✏ Modo edición activo — doble clic para editar textos</span>
+  <button class="save-edit-btn" onclick="saveEdits()">💾 Guardar cambios</button>
+  <button style="padding:8px 16px;background:transparent;border:1px solid var(--gray);color:var(--gray3);border-radius:20px;cursor:pointer;font-size:0.8rem;" onclick="toggleEditMode()">Cerrar</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== BOLETA COMPRA LANDING ===== -->
+<div class="bol-overlay" id="bolOverlay">
+  <div class="bol-wrap">
+    <div class="bol-acts">
+      <button style="background:#1a1a1a;color:#fff;" onclick="window.print()">🖨️ Imprimir</button>
+      <button style="background:#2563eb;color:#fff;" onclick="printBolLanding()">⬇ Descargar</button>
+      <button style="background:#25D366;color:#fff;" onclick="waBolLanding()">📱 WhatsApp</button>
+      <button style="background:#eee;color:#333;margin-left:auto;" onclick="closeBolLanding()">✕ Cerrar</button>
+    </div>
+    <div class="bol-body" id="bolBody"></div>
+  </div>
+</div>
+
+<script>
+// ===== DB =====
+const DB = {
+  get: k => { try { return JSON.parse(localStorage.getItem('gs_'+k)) } catch(e){return null} },
+  set: (k,v) => localStorage.setItem('gs_'+k, JSON.stringify(v)),
+};
+
+// ===== STATE =====
+let products = [];
+let cart = [];
+let currentFilter = '';
+let currentPay = 'Yape/Plin';
+let editMode = false;
+let logoClicks = 0;
+let logoTimer = null;
+
+// ===== LOGO TRIPLE CLICK → ERP =====
+document.getElementById('navLogo').addEventListener('click', () => {
+  logoClicks++;
+  if(logoTimer) clearTimeout(logoTimer);
+  if(logoClicks >= 3) {
+    logoClicks = 0;
+    window.open('https://pieroflores620-hub.github.io/jhordi/', '_blank');
+    toast('🔐 Abriendo ERP Golden Style…');
+    return;
+  }
+  logoTimer = setTimeout(() => { logoClicks = 0; }, 800);
+});
+
+// ===== LOAD PRODUCTS =====
+function loadProducts() {
+  // Try to load from ERP sync (localStorage)
+  const erpProducts = DB.get('landing_products') || DB.get('products');
+  if(erpProducts && erpProducts.length) {
+    products = erpProducts;
+  } else {
+    // Default products with images
+    const DEFAULT_IMGS = {
+      'Hoodies': 'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80',
+      'Conjuntos': 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80',
+      'Casacas': 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80',
+      'Joggers': 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80',
+      'Polos': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80',
+    };
+    products = [
+      {id:1,name:'Hoodie Urbano Negro',cat:'Hoodies',price:120,status:'Disponible',desc:'Hoodie premium con capucha ajustable. Tela gruesa 320g.',emoji:'🧥',mainImg:DEFAULT_IMGS['Hoodies'],imgs:[DEFAULT_IMGS['Hoodies']]},
+      {id:2,name:'Conjunto Urbano Gris',cat:'Conjuntos',price:180,status:'Disponible',desc:'Conjunto jogger + hoodie a juego. Material fleece suave.',emoji:'👕',mainImg:DEFAULT_IMGS['Conjuntos'],imgs:[DEFAULT_IMGS['Conjuntos']]},
+      {id:3,name:'Casaca Bomber Verde',cat:'Casacas',price:220,status:'Disponible',desc:'Casaca bomber estilo militar. Ribetes dorados exclusivos.',emoji:'🧥',mainImg:DEFAULT_IMGS['Casacas'],imgs:[DEFAULT_IMGS['Casacas']]},
+      {id:4,name:'Jogger Cargo Negro',cat:'Joggers',price:95,status:'Disponible',desc:'Jogger cargo con múltiples bolsillos. Tela stretch.',emoji:'👖',mainImg:DEFAULT_IMGS['Joggers'],imgs:[DEFAULT_IMGS['Joggers']]},
+      {id:5,name:'Polo Oversize Blanco',cat:'Polos',price:75,status:'Disponible',desc:'Polo oversize 100% algodón. Corte relajado tendencia 2026.',emoji:'👕',mainImg:DEFAULT_IMGS['Polos'],imgs:[DEFAULT_IMGS['Polos']]},
+      {id:6,name:'Hoodie Tie-Dye',cat:'Hoodies',price:135,status:'Disponible',desc:'Hoodie efecto tie-dye exclusivo. Colores únicos.',emoji:'🎨',mainImg:DEFAULT_IMGS['Hoodies'],imgs:[DEFAULT_IMGS['Hoodies']]},
+    ];
+  }
+  renderProducts();
+  updateSalesTicker();
+}
+
+// ===== RENDER PRODUCTS =====
+function renderProducts() {
+  const filtered = currentFilter ? products.filter(p=>p.cat===currentFilter) : products;
+  const grid = document.getElementById('productsGrid');
+  if(!filtered.length) {
+    grid.innerHTML = '<div style="color:var(--gray3);padding:40px;text-align:center;grid-column:1/-1;">No hay prendas en esta categoría por el momento</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" data-id="${p.id}">
+      <div class="prod-img-wrap">
+        ${p.mainImg
+          ? `<img src="${p.mainImg}" class="prod-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : ''}
+        <div class="prod-img-ph" ${p.mainImg?'style="display:none"':''}>${p.emoji||'👕'}</div>
+        ${p.imgs&&p.imgs.length>1?`<div class="prod-img-count">+${p.imgs.length-1} fotos</div>`:''}
+        <div class="prod-badge ${p.status==='Agotado'?'agotado':''}">${p.status==='Agotado'?'AGOTADO':'NUEVO'}</div>
+        ${editMode?`<div class="edit-upload-overlay" onclick="uploadProductImg(${p.id})">📸 Cambiar imagen</div>`:''}
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">${p.cat}</div>
+        <div class="prod-name" ${editMode?`contenteditable="true" onblur="saveFieldEdit(${p.id},'name',this.textContent)"`:''}>${p.name}</div>
+        <div class="prod-desc" ${editMode?`contenteditable="true" onblur="saveFieldEdit(${p.id},'desc',this.textContent)"`:''}>${p.desc||''}</div>
+        <div class="prod-footer">
+          <div class="prod-price">S/ ${p.price}</div>
+          <button class="add-cart-btn" ${p.status==='Agotado'?'disabled':''} onclick="addToCart(${p.id})">${p.status==='Agotado'?'Agotado':'+ Agregar'}</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCat(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+
+// ===== CART =====
+function addToCart(id) {
+  const p = products.find(x=>x.id===id);
+  if(!p||p.status==='Agotado') return;
+  const existing = cart.find(c=>c.id===id);
+  if(existing) existing.qty++;
+  else cart.push({...p,qty:1});
+  updateCartUI();
+  toast(`${p.emoji||'👕'} ${p.name} agregado al carrito`, 'success');
+  openCart();
+}
+
+function updateCartUI() {
+  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+  const count = cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('cartCount').textContent = count;
+  const base = total/1.18;
+  const igv = total-base;
+  document.getElementById('drawerBase').textContent = 'S/ '+base.toFixed(2);
+  document.getElementById('drawerIgv').textContent = 'S/ '+igv.toFixed(2);
+  document.getElementById('drawerTotal').textContent = 'S/ '+total.toFixed(2);
+  const el = document.getElementById('drawerItems');
+  if(!cart.length) { el.innerHTML='<div style="text-align:center;padding:40px;color:var(--gray3);">Tu carrito está vacío</div>'; return; }
+  el.innerHTML = cart.map(c => `
+    <div class="cart-item">
+      ${c.mainImg?`<img src="${c.mainImg}" class="cart-item-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="cart-item-img-ph" style="display:none">${c.emoji||'👕'}</div>`
+      :`<div class="cart-item-img-ph">${c.emoji||'👕'}</div>`}
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-price">S/ ${(c.price*c.qty).toFixed(2)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${c.id},-1)">−</button>
+          <span style="font-size:0.82rem;min-width:20px;text-align:center">${c.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${c.id},1)">+</button>
+          <button onclick="removeFromCart(${c.id})" style="background:transparent;border:none;color:var(--red);cursor:pointer;margin-left:4px;font-size:0.8rem;">✕</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c=>c.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty<=0) cart = cart.filter(c=>c.id!==id);
+  updateCartUI();
+}
+
+function removeFromCart(id) { cart=cart.filter(c=>c.id!==id); updateCartUI(); }
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+}
+
+function selPay(btn, method) {
+  document.querySelectorAll('.pay-opt').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  currentPay = method;
+}
+
+// ===== ORDER =====
+function confirmOrder() {
+  if(!cart.length) { toast('Tu carrito está vacío','error'); return; }
+  const name = document.getElementById('orderName').value.trim();
+  const phone = document.getElementById('orderPhone').value.trim();
+  if(!name||!phone) { toast('Por favor ingresa tu nombre y WhatsApp','error'); return; }
+  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+  const order = {
+    id: 'LP-'+Date.now(),
+    date: new Date().toISOString(),
+    cliente: name, phone, canal: 'Landing Web',
+    pago: currentPay, total,
+    items: cart.reduce((a,c)=>a+c.qty,0),
+    detalle: cart.map(c=>`${c.qty}x ${c.name}`).join(', '),
+    addr: document.getElementById('orderAddr').value,
+    status: 'Pendiente'
+  };
+  // Save to shared storage for ERP
+  const orders = DB.get('landing_orders') || [];
+  orders.push(order);
+  DB.set('landing_orders', orders);
+  // Save to external ERP storage
+  const extOrders = DB.get('gs_ventas_confirmadas') || [];
+  extOrders.push(order);
+  DB.set('gs_ventas_confirmadas', extOrders);
+  // Update sales count
+  const salesCount = DB.get('landing_sales_count') || 0;
+  DB.set('landing_sales_count', salesCount + order.items);
+
+  cart = [];
+  updateCartUI();
+  closeCart();
+  showConfirmBanner(`Pedido #${order.id.slice(-6)} recibido. Te contactaremos al ${phone} en breve. ¡Gracias ${name}!`);
+  updateSalesTicker();
+}
+
+function showConfirmBanner(msg) {
+  const banner = document.getElementById('confirmBanner');
+  document.getElementById('confirmMsg').textContent = msg;
+  banner.classList.add('show');
+  setTimeout(()=>banner.classList.remove('show'),6000);
+}
+
+function orderViaWhatsApp() {
+  if(!cart.length) { toast('Tu carrito está vacío','error'); return; }
+  const name = document.getElementById('orderName').value || 'Cliente';
+  const items = cart.map(c=>`• ${c.qty}x ${c.name} — S/ ${(c.price*c.qty).toFixed(2)}`).join('\n');
+  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+  const msg = `🛍️ *Pedido Golden Style*\n\n*Cliente:* ${name}\n*Prendas:*\n${items}\n\n*TOTAL: S/ ${total.toFixed(2)}*\n*Pago:* ${currentPay}\n\n¡Gracias por elegir Golden Style! 👑`;
+  window.open('https://wa.me/51925792656?text='+encodeURIComponent(msg),'_blank');
+}
+
+function sendContactWA() {
+  const name = document.getElementById('ctaName').value || '';
+  const phone = document.getElementById('ctaPhone').value || '';
+  const msg = document.getElementById('ctaMsg').value || '';
+  const text = `Hola Golden Style! 👋\nSoy ${name} (${phone})\n\n${msg}`;
+  window.open('https://wa.me/51925792656?text='+encodeURIComponent(text),'_blank');
+}
+
+// ===== TICKER =====
+function updateSalesTicker() {
+  const count = DB.get('landing_sales_count') || 0;
+  const salesTotal = (DB.get('sales')||[]).reduce((a,s)=>a+(s.items||1),0);
+  document.getElementById('salesTicker').textContent = count + salesTotal;
+}
+
+// ===== EDIT MODE =====
+function toggleEditMode() {
+  editMode = !editMode;
+  document.getElementById('editToggle').classList.toggle('active', editMode);
+  document.getElementById('editToggle').textContent = editMode ? '✅ Editando' : '✏ Editar';
+  document.getElementById('editToolbar').classList.toggle('show', editMode);
+  document.body.classList.toggle('edit-mode', editMode);
+  renderProducts();
+  if(editMode) toast('Modo edición activado. Doble clic en textos para editar.');
+}
+
+function saveFieldEdit(id, field, value) {
+  const p = products.find(x=>x.id===id);
+  if(p) { p[field] = value.trim(); DB.set('landing_products', products); }
+}
+
+function uploadProductImg(id) {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = 'image/*';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const p = products.find(x=>x.id===id);
+      if(p) {
+        p.mainImg = ev.target.result;
+        if(!p.imgs) p.imgs = [];
+        p.imgs.unshift(ev.target.result);
+        DB.set('landing_products', products);
+        renderProducts();
+        toast('Imagen actualizada ✓','success');
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+
+function saveEdits() {
+  DB.set('landing_products', products);
+  toast('Cambios guardados ✓','success');
+  toggleEditMode();
+}
+
+// ===== TOAST =====
+function toast(msg, type='') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show'+(type?' '+type:'');
+  setTimeout(()=>el.className='toast',3500);
+}
+
+// ===== POLL CONFIRMATIONS =====
+function pollConfirmations() {
+  const confirmations = DB.get('order_confirmations') || {};
+  const orders = DB.get('landing_orders') || [];
+  const shown = DB.get('shown_confirmations') || [];
+  Object.entries(confirmations).forEach(([id, conf]) => {
+    if(!shown.includes(id) && conf.confirmed) {
+      shown.push(id);
+      DB.set('shown_confirmations', shown);
+      showConfirmBanner(conf.message || '✅ Tu pedido fue confirmado por Golden Style.');
+    }
+  });
+}
+
+// ===== INIT =====
+loadProducts();
+setInterval(loadProducts, 10000);
+setInterval(pollConfirmations, 8000);
+pollConfirmations();
+
+// ===== BOLETA / COMPROBANTE DE COMPRA =====
+let lastOrder = null;
+
+function numToLetrasL(num) {
+  const u=['','UNO','DOS','TRES','CUATRO','CINCO','SEIS','SIETE','OCHO','NUEVE','DIEZ','ONCE','DOCE','TRECE','CATORCE','QUINCE','DIECISÉIS','DIECISIETE','DIECIOCHO','DIECINUEVE'];
+  const d=['','','VEINTE','TREINTA','CUARENTA','CINCUENTA','SESENTA','SETENTA','OCHENTA','NOVENTA'];
+  const c=['','CIENTO','DOSCIENTOS','TRESCIENTOS','CUATROCIENTOS','QUINIENTOS','SEISCIENTOS','SETECIENTOS','OCHOCIENTOS','NOVECIENTOS'];
+  const n=Math.floor(num); const dec=Math.round((num-n)*100);
+  function cv(n){if(n===0)return'CERO';if(n===100)return'CIEN';if(n<20)return u[n];if(n<100)return d[Math.floor(n/10)]+(n%10?' Y '+u[n%10]:'');if(n<1000)return c[Math.floor(n/100)]+(n%100?' '+cv(n%100):'');return cv(Math.floor(n/1000))+' MIL'+(n%1000?' '+cv(n%1000):'');}
+  return cv(n)+' CON '+String(dec).padStart(2,'0')+'/100';
+}
+
+function openBolLanding(order) {
+  lastOrder = order;
+  const total = parseFloat(order.total)||0;
+  const base = total/1.18;
+  const igv = total-base;
+  const num = 'B001-'+order.id.toString().slice(-6).padStart(6,'0');
+  const fecha = new Date(order.date).toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'});
+  const hora = new Date(order.date).toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
+
+  document.getElementById('bolBody').innerHTML = `
+    <div class="bol-hdr">
+      <div class="bol-brand">GOLDEN STYLE</div>
+      <div style="font-size:0.6rem;letter-spacing:2px;color:#666;margin:2px 0;">WEAR YOUR ATTITUDE</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:6px;">
+        <div><input class="bol-ef" style="text-align:center;font-weight:700;" value="GOLDEN STYLE S.A.C."></div>
+        <div>RUC: <input class="bol-ef" style="width:130px;text-align:center;" value="20XXXXXXXXX"></div>
+        <div><input class="bol-ef" style="text-align:center;font-size:0.65rem;" value="Trujillo, La Libertad, Perú"></div>
+      </div>
+      <div style="margin-top:10px;">
+        <select onchange="this.nextElementSibling.textContent=this.options[this.selectedIndex].text.toUpperCase()" style="font-size:0.7rem;border:1px solid #ccc;border-radius:4px;padding:2px 4px;margin-bottom:4px;">
+          <option>Boleta de Venta</option><option>Factura</option><option>Nota de Venta</option><option>Ticket</option>
+        </select>
+        <div class="bol-tipo-badge">BOLETA DE VENTA</div>
+        <div style="font-size:0.7rem;color:#555;">N° <strong>${num}</strong></div>
+        <div style="font-size:0.68rem;color:#777;">Fecha: ${fecha} · ${hora}</div>
+      </div>
+    </div>
+
+    <div style="font-size:0.72rem;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin-bottom:12px;">
+      <span style="color:#666;">Cliente:</span><span><input class="bol-ef" value="${order.cliente||'Consumidor Final'}"></span>
+      <span style="color:#666;">DNI/RUC:</span><span><input class="bol-ef" value="-" placeholder="DNI o RUC"></span>
+      <span style="color:#666;">Dirección:</span><span><input class="bol-ef" value="${order.addr||'-'}"></span>
+      <span style="color:#666;">WhatsApp:</span><span><input class="bol-ef" value="${order.phone||'-'}"></span>
+      <span style="color:#666;">Pago:</span><span style="font-weight:700;">${order.pago||'—'}</span>
+    </div>
+
+    <table class="bol-tbl">
+      <thead><tr><th>Cant.</th><th>Descripción</th><th>P.Unit.</th><th>Total</th></tr></thead>
+      <tbody id="bol_land_items">
+        ${order.detalle ? order.detalle.split(',').map(item=>{
+          const t = item.trim();
+          const m = t.match(/^(\d+)x\s*(.+)$/);
+          const qty = m?parseInt(m[1]):1; const name = m?m[2]:t;
+          return `<tr><td>${qty}</td><td>${name}</td><td>—</td><td>—</td></tr>`;
+        }).join('') : `<tr><td>1</td><td>Prenda Golden Style</td><td>S/ ${base.toFixed(2)}</td><td>S/ ${base.toFixed(2)}</td></tr>`}
+      </tbody>
+    </table>
+    <div style="margin-bottom:10px;">
+      <button onclick="addBolLandItem()" style="font-size:0.65rem;border:1px dashed #bbb;background:transparent;padding:3px 8px;cursor:pointer;border-radius:4px;color:#666;">+ Agregar línea</button>
+    </div>
+
+    <div class="bol-tots">
+      <div class="bol-trow"><span>OP. GRAVADAS</span><span>S/ ${base.toFixed(2)}</span></div>
+      <div class="bol-trow"><span>IGV (18%)</span><span>S/ ${igv.toFixed(2)}</span></div>
+      <div class="bol-trow"><span>DESCUENTO</span><span>S/ <input class="bol-ef" style="width:48px;text-align:right;" value="0.00" id="bol_land_desc"></span></div>
+      <div class="bol-trow bol-tmain"><span>IMPORTE TOTAL</span><span id="bol_land_tot">S/ ${total.toFixed(2)}</span></div>
+    </div>
+
+    <div style="font-size:0.7rem;margin:10px 0;"><em>${numToLetrasL(total)} SOLES</em></div>
+
+    <div style="font-size:0.7rem;margin-bottom:8px;">
+      <strong>Observaciones:</strong><br>
+      <textarea style="width:100%;height:36px;font-family:'Courier New';font-size:0.68rem;border:1px dashed #ccc;padding:4px;resize:none;background:#fafafa;" placeholder="Observaciones..."></textarea>
+    </div>
+
+    <div class="bol-ftr">
+      <div style="font-size:1.4rem;">🔲</div>
+      <div>Representación impresa de la Boleta de Venta electrónica</div>
+      <div>Autorizados según R.S. N° 097-2012/SUNAT</div>
+      <div style="font-weight:700;margin-top:4px;">¡Gracias por comprar en Golden Style! 👑</div>
+      <div>Trujillo, La Libertad · goldenstyle@gmail.com · 925 792 656</div>
+    </div>
+  `;
+  document.getElementById('bolOverlay').classList.add('open');
+}
+
+function addBolLandItem() {
+  const tbody = document.getElementById('bol_land_items');
+  const r = document.createElement('tr');
+  r.innerHTML = `<td><input style="width:32px;border:1px solid #ddd;padding:2px;" value="1"></td><td><input style="width:130px;border:1px solid #ddd;padding:2px;" placeholder="Prenda"></td><td><input style="width:54px;border:1px solid #ddd;padding:2px;" value="0.00"></td><td><input style="width:54px;border:1px solid #ddd;padding:2px;" value="0.00"></td>`;
+  tbody.appendChild(r);
+}
+
+function closeBolLanding() { document.getElementById('bolOverlay').classList.remove('open'); }
+
+function printBolLanding() {
+  const body = document.getElementById('bolBody').innerHTML;
+  const w = window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Boleta Golden Style</title>
+  <style>body{font-family:'Courier New',monospace;padding:20px;color:#111;max-width:400px;margin:auto;}*{box-sizing:border-box;}.bol-hdr{text-align:center;border-bottom:2px solid #111;padding-bottom:12px;margin-bottom:12px;}.bol-brand{font-size:1.3rem;font-weight:900;letter-spacing:3px;}.bol-tipo-badge{display:inline-block;border:2px solid #111;padding:3px 16px;font-size:0.85rem;font-weight:800;letter-spacing:2px;margin:8px 0 4px;}.bol-ef{border:none;border-bottom:1px dashed #bbb;background:transparent;font-family:'Courier New',monospace;font-size:0.75rem;color:#111;width:100%;outline:none;padding:2px 0;}.bol-tbl{width:100%;border-collapse:collapse;font-size:0.72rem;margin:12px 0;}.bol-tbl th{border-bottom:2px solid #111;padding:4px 2px;text-align:left;font-size:0.65rem;text-transform:uppercase;}.bol-tbl td{padding:4px 2px;border-bottom:1px solid #eee;}.bol-tots{border-top:2px solid #111;padding-top:8px;}.bol-trow{display:flex;justify-content:space-between;font-size:0.75rem;padding:2px 0;}.bol-tmain{font-size:0.95rem;font-weight:900;border-top:1px solid #111;margin-top:6px;padding-top:6px;}.bol-ftr{text-align:center;font-size:0.62rem;color:#777;margin-top:14px;border-top:1px dashed #ccc;padding-top:10px;line-height:1.8;}</style>
+  </head><body>${body}</body></html>`);
+  w.document.close();
+  setTimeout(()=>w.print(),400);
+}
+
+function waBolLanding() {
+  if(!lastOrder) return;
+  const o = lastOrder;
+  const total = parseFloat(o.total)||0;
+  const base = total/1.18; const igv = total-base;
+  const num = 'B001-'+o.id.toString().slice(-6).padStart(6,'0');
+  const msg = `🧾 *BOLETA DE COMPRA - GOLDEN STYLE*\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `📋 N° ${num}\n📅 ${new Date(o.date).toLocaleDateString('es-PE')}\n` +
+    `👤 Cliente: ${o.cliente||'—'}\n📱 ${o.phone||'—'}\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `🛍️ ${o.detalle||'Prenda Golden Style'}\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `📊 Base: S/ ${base.toFixed(2)}\n📊 IGV: S/ ${igv.toFixed(2)}\n` +
+    `💰 *TOTAL: S/ ${total.toFixed(2)}*\n💳 Pago: ${o.pago||'—'}\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `🏪 GOLDEN STYLE S.A.C. · Trujillo\n` +
+    `📱 925 792 656\n¡Gracias por su compra! 👑`;
+  window.open('https://wa.me/51925792656?text='+encodeURIComponent(msg),'_blank');
+}
+
+// Override confirmOrder to show boleta after purchase
+const _origConfirmOrder = confirmOrder;
+confirmOrder = function() {
+  if(!cart.length) { toast('Tu carrito está vacío','error'); return; }
+  const name = document.getElementById('orderName').value.trim();
+  const phone = document.getElementById('orderPhone').value.trim();
+  if(!name||!phone) { toast('Por favor ingresa tu nombre y WhatsApp','error'); return; }
+  const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+  const order = {
+    id: 'LP-'+Date.now(),
+    date: new Date().toISOString(),
+    cliente: name, phone, canal: 'Landing Web',
+    pago: currentPay, total,
+    items: cart.reduce((a,c)=>a+c.qty,0),
+    detalle: cart.map(c=>`${c.qty}x ${c.name}`).join(', '),
+    addr: document.getElementById('orderAddr').value,
+    status: 'Pendiente'
+  };
+  const orders = DB.get('landing_orders') || [];
+  orders.push(order);
+  DB.set('landing_orders', orders);
+  const extOrders = DB.get('gs_ventas_confirmadas') || [];
+  extOrders.push(order);
+  DB.set('gs_ventas_confirmadas', extOrders);
+  const sc = DB.get('landing_sales_count')||0;
+  DB.set('landing_sales_count', sc+order.items);
+  cart = [];
+  updateCartUI();
+  closeCart();
+  updateSalesTicker();
+  // Show boleta
+  setTimeout(()=>openBolLanding(order), 300);
+  showConfirmBanner(`¡Pedido #${order.id.slice(-6)} recibido! Te contactaremos al ${phone}.`);
+};
+</script>
+</body>
+</html>
